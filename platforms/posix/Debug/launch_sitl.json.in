@@ -222,6 +222,7 @@
             "description": "GZ vehicle model",
             "options": [
               "x500",
+              "skywinger",
               "x500_depth",
               "rc_cessna",
               "standard_vtol",

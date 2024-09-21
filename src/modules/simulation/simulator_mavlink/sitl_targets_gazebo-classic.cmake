@@ -98,6 +98,7 @@ if(gazebo_FOUND)
 		rover
 		standard_vtol
 		standard_vtol_drop
+		skywinger
 		tailsitter
 		techpod
 		tiltrotor
