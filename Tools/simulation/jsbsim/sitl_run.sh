@@ -70,10 +70,11 @@ export JSBSIM_AIRCRAFT_MODEL="$MODEL_NAME"
 if [[ -n "$HEADLESS" ]]; then
 	echo "not running flightgear gui"
 else
-	export FG_AIRCRAFT="${SRC_DIR}/Tools/simulation/jsbsim/jsbsim_bridge/models"
+	export FG_AIRCRAFT="${src_path}/Tools/simulation/jsbsim/jsbsim_bridge/models"
 
 	$FG_BINARY --fdm=null \
 		--native-fdm=socket,in,60,,5550,udp \
+        --fg-aircraft=$FG_AIRCRAFT \
 		--aircraft=$JSBSIM_AIRCRAFT_MODEL \
 		--airport=${world} \
 		--disable-hud \
@@ -81,7 +82,7 @@ else
 	FGFS_PID=$!
 fi
 
-"${build_path}/build_jsbsim_bridge/jsbsim_bridge" ${model} -s "${src_path}/Tools/simulation/jsbsim/jsbsim_bridge/scene/${world}.xml" 2> /dev/null &
+"${build_path}/build_jsbsim_bridge/jsbsim_bridge" ${model} -s "${src_path}/Tools/simulation/jsbsim/jsbsim_bridge/scene/${world}.xml" &
 JSBSIM_PID=$!
 
 pushd "$rootfs" >/dev/null
